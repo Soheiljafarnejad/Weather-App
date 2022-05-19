@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const initialState = { data: [], error: false, loading: false };
+const initialState = { data: "", error: false, loading: false };
 
 export const asyncGet = createAsyncThunk(
   "data/asyncGet",
@@ -28,14 +28,15 @@ const asyncSlice = createSlice({
   extraReducers: {
     // get data
     [asyncGet.pending]: (state, action) => {
-      return { ...state, data: [], error: false, loading: true };
+      return { ...state, data: "", error: false, loading: true };
     },
 
     [asyncGet.rejected]: (state, action) => {
-      return { ...state, data: [], error: action.payload, loading: false };
+      return { ...state, data: "", error: action.payload, loading: false };
     },
 
     [asyncGet.fulfilled]: (state, action) => {
+      console.log(action);
       return { ...state, data: action.payload, error: false, loading: false };
     },
   },
