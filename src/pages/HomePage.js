@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import icons from "../utils/icons";
 import dateFormat from "../utils/date";
 import ViewReport from "../components/ViewReport";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   const [data, setData] = useState(null);
@@ -25,7 +26,7 @@ const HomePage = () => {
     // const data1 = new Date(tomorrow).toLocaleString("en-US", options1);
     // console.log(data1);
     return (
-      <section className="bg-gray-100 flex flex-col items-center justify-start px-4 py-8 min-h-screen">
+      <section className="bg-gray-100 flex flex-col items-center justify-start pt-4 pb-12 min-h-screen">
         <h2 className="text-xl font-medium mb-1">
           {data.location.name}/{data.location.country}
         </h2>
@@ -60,7 +61,7 @@ const HomePage = () => {
         </ul>
         <div className="flex items-center justify-between w-full font-medium mb-4">
           <h4>Today</h4>
-          <p className="text-gray-600">View full report</p>
+          <Link className="text-gray-600" to="/search">View full report</Link>
         </div>
         <ViewReport data={data.forecast.forecastday[0].hour} />
       </section>
