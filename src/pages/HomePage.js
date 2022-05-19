@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { asyncGet } from "../features/asyncSlice";
 import { useDispatch, useSelector } from "react-redux";
-import icon from "../utils/icon";
+import icons from "../utils/icons";
 import dateFormat from "../utils/date";
 import ViewReport from "../components/ViewReport";
 
@@ -9,7 +9,7 @@ const HomePage = () => {
   const [data, setData] = useState(null);
   // const dispatch = useDispatch();
   // const {data} = useSelector((store) => store.data);
-  // console.log(data);
+  console.log(data);
   useEffect(() => {
     setData(JSON.parse(localStorage.getItem("test")));
     // dispatch(asyncGet("london"));
@@ -31,11 +31,11 @@ const HomePage = () => {
         </h2>
         <h3 className="font-medium text-gray-700 text-sm mb-4">{date}</h3>
         <h2 className="py-2 px-8 bg-gray-200 font-medium rounded-md shadow-lg mb-4">
-          Forecast
+          {data.current.condition.text}
         </h2>
         <img
           className="w-52 my-8 mx-auto"
-          src={icon(data.current.condition.icon)}
+          src={icons(data.current.condition.icon)}
           alt={data.current.condition.text}
         />
         <ul className="flex items-center justify-between w-full mb-8">

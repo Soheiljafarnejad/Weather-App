@@ -1,5 +1,5 @@
 import dateFormat from "../utils/date";
-import icon from "../utils/icon";
+import icons from "../utils/icons";
 
 const ViewReport = ({ data }) => {
   const filtered = data.filter((item) => {
@@ -30,7 +30,7 @@ const ViewReport = ({ data }) => {
             </p>
             <img
               className="w-16"
-              src={icon(item.condition.icon)}
+              src={icons(item.condition.icon)}
               alt={item.condition.text}
             />
           </li>

@@ -10,7 +10,7 @@ import day365 from "../assets/light/365.png";
 import day386 from "../assets/light/386.png";
 import day389 from "../assets/light/389.png";
 import day395 from "../assets/light/395.png";
-
+// night
 import night113 from "../assets/dark/113.png";
 import night116 from "../assets/dark/116.png";
 import night122 from "../assets/dark/122.png";
@@ -71,7 +71,7 @@ const iconOptions = [
   { title: "day374", url: day395 },
   { title: "day377", url: day395 },
   { title: "day323", url: day395 },
-  //   night
+  // night
   { title: "night395", url: day395 },
   { title: "night392", url: day395 },
   { title: "night113", url: night113 },
@@ -123,7 +123,7 @@ const iconOptions = [
   { title: "night392", url: night392 },
 ];
 
-const icon = (imgUrl) => {
+const icons = (imgUrl) => {
   const value = imgUrl.split("/").splice(5, 6).join("").split(".")[0];
   const findIcon = iconOptions.find((item) => item.title === value);
   if (findIcon) return findIcon.url;
@@ -133,4 +133,4 @@ const icon = (imgUrl) => {
   }
 };
 
-export default icon;
+export default icons;
