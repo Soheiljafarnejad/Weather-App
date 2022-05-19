@@ -6,13 +6,13 @@ import dateFormat from "../utils/date";
 import ViewReport from "../components/ViewReport";
 
 const HomePage = () => {
-  // const [data, setData] = useState(null);
-  const dispatch = useDispatch();
-  const {data} = useSelector((store) => store.data);
+  const [data, setData] = useState(null);
+  // const dispatch = useDispatch();
+  // const {data} = useSelector((store) => store.data);
   // console.log(data);
   useEffect(() => {
-    // setData(JSON.parse(localStorage.getItem("test")));
-    dispatch(asyncGet("london"));
+    setData(JSON.parse(localStorage.getItem("test")));
+    // dispatch(asyncGet("london"));
   }, []);
   if (data) {
     const options = { year: "numeric", month: "long", day: "numeric" };
