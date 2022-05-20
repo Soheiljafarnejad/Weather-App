@@ -10,7 +10,7 @@ const HomePage = () => {
   const [data, setData] = useState(null);
   // const dispatch = useDispatch();
   // const {data} = useSelector((store) => store.data);
-  console.log(data);
+  // console.log(data);
   useEffect(() => {
     setData(JSON.parse(localStorage.getItem("test")));
     // dispatch(asyncGet("london"));
@@ -26,8 +26,8 @@ const HomePage = () => {
     // const data1 = new Date(tomorrow).toLocaleString("en-US", options1);
     // console.log(data1);
     return (
-      <section className="bg-gray-100 flex flex-col items-center justify-start pt-4 pb-12 min-h-screen">
-        <h2 className="text-xl font-medium mb-1">
+      <section className="bg-gray-100 flex flex-col items-center justify-start min-h-screen">
+        <h2 className="font-medium text-2xl mb-1">
           {data.location.name}/{data.location.country}
         </h2>
         <h3 className="font-medium text-gray-700 text-sm mb-4">{date}</h3>
@@ -61,7 +61,7 @@ const HomePage = () => {
         </ul>
         <div className="flex items-center justify-between w-full font-medium mb-4">
           <h4>Today</h4>
-          <Link className="text-gray-600" to="/search">View full report</Link>
+          <Link className="text-gray-600" to="/report">View full report</Link>
         </div>
         <ViewReport data={data.forecast.forecastday[0].hour} />
       </section>

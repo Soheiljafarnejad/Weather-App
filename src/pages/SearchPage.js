@@ -1,6 +1,6 @@
 const SearchPage = () => {
   return (
-    <section className="min-h-screen text-center pt-4 pb-12">
+    <section className="min-h-screen text-center">
       <h2 className="font-medium text-2xl mb-2">Pick location</h2>
       <p className="text-sm mb-6 px-4">
         Find the area or city that you want to know the detailed weather info at
