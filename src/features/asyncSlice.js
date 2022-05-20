@@ -9,7 +9,7 @@ export const asyncGet = createAsyncThunk(
     const key = "4ea3e3d50f69454b968131056221805";
     try {
       const response = await axios.get(
-        `http://api.weatherapi.com/v1/forecast.json`,
+        `https://api.weatherapi.com/v1/forecast.json`,
         {
           params: { key, q: payload, days: 3 },
         }

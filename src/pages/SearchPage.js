@@ -1,5 +1,5 @@
 import { useDebouncedCallback } from "use-debounce";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { asyncGet } from "../features/asyncSlice";
 import icons from "../utils/icons";
@@ -7,18 +7,22 @@ import { useNavigate } from "react-router-dom";
 
 const SearchPage = () => {
   const [searchValue, setSearchValue] = useState("");
-  const { recently } = useSelector((store) => store.data);
+  const { recently, error, loading, data } = useSelector((store) => store.data);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const debounced = useDebouncedCallback((value) => {
     dispatch(asyncGet(value));
-  }, 1000);
+  }, 500);
 
   const searchHandler = (e) => {
     setSearchValue(e.target.value);
     if (e.target.value !== "") debounced(e.target.value);
   };
+
+  useEffect(() => {
+    if (data && !loading && !error) setSearchValue("");
+  }, [data, error, loading]);
 
   const clickHandler = (value) => {
     dispatch(asyncGet(value));
@@ -51,11 +55,20 @@ const SearchPage = () => {
             </svg>
           </span>
           <input
-            className="bg-gray-200 focus:border-0 focus:outline-0 py-3 px-2 font-medium w-full"
+            className="bg-gray-200 focus:border-0 focus:outline-0 py-3 px-2 font-medium flex-1"
             type="text"
             value={searchValue}
             onChange={searchHandler}
           />
+          <div
+            className={`h-5 w-5 text-gray-400 border-4 rounded-full border-gray-400 animate-loading border-t-gray-600 border-l-gray-600 ${
+              !searchValue
+                ? "hidden"
+                : error && searchValue
+                ? "border-red-600 border-t-red-600 border-l-red-600"
+                : ""
+            }`}
+          ></div>
         </div>
         <button className="bg-gray-200 text-gray-600 rounded-md shadow-md p-3">
           <svg
