@@ -1,27 +1,20 @@
-import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import ViewReport from "../components/ViewReport";
 import dateFormat from "../utils/date";
 import icons from "../utils/icons";
 const ReportPage = () => {
-  //   const {data} = useSelector((store) => store.data);
-  const [data, setData] = useState(null);
-  //   const dispatch = useDispatch();
-  //   const {data} = useSelector((store) => store.data);
-  //   console.log(data);
-  useEffect(() => {
-    setData(JSON.parse(localStorage.getItem("test")));
-    // dispatch(asyncGet("london"));
-  }, []);
+  const { data } = useSelector((store) => store.data);
+
   if (data) {
     const options = { year: "numeric", month: "long", day: "numeric" };
     const today = data.forecast.forecastday[0].hour;
     const days = data.forecast.forecastday.slice(1, 3);
-    console.log(data.forecast.forecastday[0].date);
     return (
       <section className="min-h-screen">
-        <h2 className="font-medium text-2xl mb-8 text-center">
+        <h2 className="font-medium text-2xl mb-2 text-center">
           Forecast report
+        </h2>
+        <h2 className="font-medium text-center text-lg mb-8">
+          {data.location.name}/{data.location.country}
         </h2>
         <section>
           <div className="flex items-center justify-between w-full mb-4">

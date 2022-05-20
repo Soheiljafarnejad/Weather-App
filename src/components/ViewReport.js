@@ -7,7 +7,7 @@ const ViewReport = ({ data }) => {
   });
   return (
     <ul className="flex flex-col items-center justify-start gap-4 w-full pb-8">
-      {data.map((item) => {
+      {filtered.map((item) => {
         const optionsTime = { timeStyle: "short", hour12: false };
         const optionsDate = { month: "long", day: "numeric" };
         const time = dateFormat(item.time, optionsTime);

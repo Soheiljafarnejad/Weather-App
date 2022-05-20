@@ -1,30 +1,16 @@
-import { useEffect, useState } from "react";
-import { asyncGet } from "../features/asyncSlice";
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import icons from "../utils/icons";
 import dateFormat from "../utils/date";
 import ViewReport from "../components/ViewReport";
 import { Link } from "react-router-dom";
 
 const HomePage = () => {
-  const [data, setData] = useState(null);
-  // const dispatch = useDispatch();
-  // const {data} = useSelector((store) => store.data);
-  // console.log(data);
-  useEffect(() => {
-    setData(JSON.parse(localStorage.getItem("test")));
-    // dispatch(asyncGet("london"));
-  }, []);
+  const { data } = useSelector((store) => store.data);
+
   if (data) {
     const options = { year: "numeric", month: "long", day: "numeric" };
     const date = dateFormat(data.current.last_updated, options);
 
-    // let options1 = { weekday: 'long', month: 'long', day: 'numeric' };
-    //  const today = new Date();
-    // let tomorrow = new Date();
-    // tomorrow.setDate(today.getDate() + 1);
-    // const data1 = new Date(tomorrow).toLocaleString("en-US", options1);
-    // console.log(data1);
     return (
       <section className="bg-gray-100 flex flex-col items-center justify-start min-h-screen">
         <h2 className="font-medium text-2xl mb-1">
@@ -61,7 +47,9 @@ const HomePage = () => {
         </ul>
         <div className="flex items-center justify-between w-full font-medium mb-4">
           <h4>Today</h4>
-          <Link className="text-gray-600" to="/report">View full report</Link>
+          <Link className="text-gray-600" to="/report">
+            View full report
+          </Link>
         </div>
         <ViewReport data={data.forecast.forecastday[0].hour} />
       </section>

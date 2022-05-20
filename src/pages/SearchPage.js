@@ -1,4 +1,30 @@
+import { useDebouncedCallback } from "use-debounce";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { asyncGet } from "../features/asyncSlice";
+import icons from "../utils/icons";
+import { useNavigate } from "react-router-dom";
+
 const SearchPage = () => {
+  const [searchValue, setSearchValue] = useState("");
+  const { recently } = useSelector((store) => store.data);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const debounced = useDebouncedCallback((value) => {
+    dispatch(asyncGet(value));
+  }, 1000);
+
+  const searchHandler = (e) => {
+    setSearchValue(e.target.value);
+    if (e.target.value !== "") debounced(e.target.value);
+  };
+
+  const clickHandler = (value) => {
+    dispatch(asyncGet(value));
+    navigate("/");
+  };
+
   return (
     <section className="min-h-screen text-center">
       <h2 className="font-medium text-2xl mb-2">Pick location</h2>
@@ -27,6 +53,8 @@ const SearchPage = () => {
           <input
             className="bg-gray-200 focus:border-0 focus:outline-0 py-3 px-2 font-medium w-full"
             type="text"
+            value={searchValue}
+            onChange={searchHandler}
           />
         </div>
         <button className="bg-gray-200 text-gray-600 rounded-md shadow-md p-3">
@@ -51,19 +79,38 @@ const SearchPage = () => {
           </svg>
         </button>
       </div>
-      <section className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div className="bg-gray-200 rounded-md shadow-md p-3">
-          <div className="flex items-center justify-between">
-            <div className="flex flex-col items-start justify-start mb-2">
-              <p className="font-medium text-xl">32</p>
-              <p className="text-gray-700">status</p>
-            </div>
-            <p>icon</p>
-          </div>
-          <p className="text-left font-medium">Tehran</p>
-        </div>
-        
-      </section>
+      <ul className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {recently &&
+          recently.map((item) => {
+            return (
+              <li
+                onClick={() => clickHandler(item.location.name)}
+                key={item.location.name}
+                className="bg-gray-200 rounded-md shadow-md p-3 cursor-pointer"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex flex-col items-start justify-start mb-2 overflow-hidden">
+                    <p className="font-medium text-xl">
+                      {Math.round(item.current.temp_c)}&#8451;
+                    </p>
+                    <p className="text-gray-700 overflow-hidden whitespace-nowrap text-ellipsis w-full">
+                      {item.current.condition.text}
+                    </p>
+                  </div>
+                  <img
+                    className="w-16"
+                    src={icons(item.current.condition.icon)}
+                    alt={item.current.condition.text}
+                  />
+                </div>
+                <p className="text-left w-full overflow-hidden whitespace-nowrap text-ellipsis">
+                  <span className="font-medium ">{item.location.name} / </span>
+                  <span>{item.location.country}</span>
+                </p>
+              </li>
+            );
+          })}
+      </ul>
     </section>
   );
 };
