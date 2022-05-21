@@ -1,13 +1,14 @@
 import { useDebouncedCallback } from "use-debounce";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import {
   asyncGetData,
   asyncSearch,
   searchLoading,
 } from "../features/asyncSlice";
-import icons from "../utils/icons";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import icons from "../utils/icons";
+import toast from "react-hot-toast";
 
 const SearchPage = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -25,14 +26,34 @@ const SearchPage = () => {
     if (e.target.value !== "") debounced(e.target.value);
   };
 
-  const clickHandler = (value) => {
+  const recentlyClickHandler = (value) => {
     dispatch(asyncGetData(value));
     navigate("/");
   };
 
-  const clickSearchListHandler = (value) => {
+  const searchListClickHandler = (value) => {
     setSearchValue("");
     dispatch(asyncGetData(value));
+  };
+
+  const getLocationUser = () => {
+    if (!navigator.geolocation) {
+      toast.error("Location is not supported by this browser");
+    } else {
+      navigator.geolocation.getCurrentPosition(success, error);
+    }
+
+    function success(position) {
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+      const location = lat + "," + lon;
+      setSearchValue("");
+      dispatch(asyncGetData(location));
+    }
+
+    function error() {
+      toast.error("Your location could not be accessed");
+    }
   };
   return (
     <section className="min-h-screen text-center">
@@ -74,7 +95,7 @@ const SearchPage = () => {
                 search.data.map((item) => {
                   return (
                     <li
-                      onClick={() => clickSearchListHandler(item.name)}
+                      onClick={() => searchListClickHandler(item.name)}
                       key={item.id}
                       className="flex items-center justify-start py-1.5 px-4 bg-gray-200 text-gray-600 w-full border border-b-gray-300 cursor-pointer"
                     >
@@ -132,7 +153,10 @@ const SearchPage = () => {
           </svg>
         </div>
 
-        <button className="bg-gray-200 text-gray-600 rounded-md shadow-md p-3">
+        <button
+          onClick={getLocationUser}
+          className="bg-gray-200 text-gray-600 rounded-md shadow-md p-3"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6"
@@ -159,7 +183,7 @@ const SearchPage = () => {
           recently.map((item) => {
             return (
               <li
-                onClick={() => clickHandler(item.location.name)}
+                onClick={() => recentlyClickHandler(item.location.name)}
                 key={item.location.name}
                 className="bg-gray-200 rounded-md shadow-md p-3 cursor-pointer"
               >
