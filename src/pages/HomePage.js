@@ -14,15 +14,15 @@ const HomePage = () => {
         <section className="backdrop-blur-sm fixed inset-0 z-20"></section>
       )}
       {error && !loading && <h2 className="text-2xl text-center">{error}</h2>}
-      {data && !loading && !error && (
+      {data && !error && (
         <>
-          <h2 className="font-medium text-2xl mb-1">
+          <h2 className="font-medium text-2xl mb-1 text-center">
             {data.location.name}/{data.location.country}
           </h2>
-          <h3 className="font-medium text-gray-700 text-sm mb-4">
+          <h3 className="font-medium text-gray-700 text-sm mb-4 text-center">
             {dateFormat(data.current.last_updated, options)}
           </h3>
-          <h2 className="py-2 px-8 bg-gray-200 font-medium rounded-md shadow-lg mb-4">
+          <h2 className="py-2 px-8 bg-gray-200 font-medium rounded-md shadow-lg mb-4 text-center">
             {data.current.condition.text}
           </h2>
           <img

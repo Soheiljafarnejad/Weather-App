@@ -1,21 +1,18 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout";
-import { asyncGet } from "./features/asyncSlice";
+import { asyncGetData } from "./features/asyncSlice";
 import HomePage from "./pages/HomePage";
 import ReportPage from "./pages/ReportPage";
 import SearchPage from "./pages/SearchPage";
 
 const App = () => {
   const dispatch = useDispatch();
-  const { data } = useSelector((store) => store.data);
 
   useEffect(() => {
-    if (!data) {
-      dispatch(asyncGet("tehran"));
-    }
-  }, [data, dispatch]);
+    dispatch(asyncGetData("tehran"));
+  }, [dispatch]);
 
   return (
     <BrowserRouter>

@@ -2,12 +2,12 @@ import { NavLink } from "react-router-dom";
 
 const Navigation = () => {
   return (
-    <nav className="fixed bottom-0 left-0 right-0 w-full">
+    <nav className="fixed bottom-0 left-0 right-0 w-full z-10">
       <ul className="flex items-center justify-between w-full bg-gray-100 shadow-[0_-2px_8px_0_rgba(0,0,0,0.1)] rounded-tr-md rounded-tl-md">
         <li className="flex-1 bg-gray-100 text-gray-500">
           <NavLink
             className={(e) =>
-              `${e.isActive ? "text-black py-6 block" : "py-6 block"}`
+              `${e.isActive ? "text-black py-4 block" : "py-4 block"}`
             }
             to="/"
           >
@@ -30,7 +30,7 @@ const Navigation = () => {
         <li className="flex-1 bg-gray-100 text-gray-500">
           <NavLink
             className={(e) =>
-              `${e.isActive ? "text-black py-6 block" : "py-6 block"}`
+              `${e.isActive ? "text-black py-4 block" : "py-4 block"}`
             }
             to="/search"
           >
@@ -53,7 +53,7 @@ const Navigation = () => {
         <li className="flex-1 bg-gray-100 text-gray-500">
           <NavLink
             className={(e) =>
-              `${e.isActive ? "text-black py-6 block" : "py-6 block"}`
+              `${e.isActive ? "text-black py-4 block" : "py-4 block"}`
             }
             to="/report"
           >
@@ -76,7 +76,7 @@ const Navigation = () => {
         <li className="flex-1 bg-gray-100 text-gray-500">
           <NavLink
             className={(e) =>
-              `${e.isActive ? "text-black py-6 block" : "py-6 block"}`
+              `${e.isActive ? "text-black py-4 block" : "py-4 block"}`
             }
             to="/setting"
           >

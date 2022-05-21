@@ -1,10 +1,16 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const initialState = { data: "", recently: [], error: false, loading: false };
+const initialState = {
+  data: "",
+  recently: [],
+  error: false,
+  loading: false,
+  search: { data: [], loading: true },
+};
 
-export const asyncGet = createAsyncThunk(
-  "data/asyncGet",
+export const asyncGetData = createAsyncThunk(
+  "data/asyncGetData",
   async (payload, { rejectWithValue }) => {
     const key = "4ea3e3d50f69454b968131056221805";
     try {
@@ -21,37 +27,73 @@ export const asyncGet = createAsyncThunk(
   }
 );
 
+export const asyncSearch = createAsyncThunk(
+  "data/asyncSearch",
+  async (payload, { rejectWithValue }) => {
+    const key = "4ea3e3d50f69454b968131056221805";
+    try {
+      const response = await axios.get(
+        `https://api.weatherapi.com/v1/search.json`,
+        {
+          params: { key, q: payload },
+        }
+      );
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 const asyncSlice = createSlice({
   name: "data",
   initialState,
   extraReducers: {
     // get data
-    [asyncGet.pending]: (state, action) => {
+    [asyncGetData.pending]: (state, action) => {
       return { ...state, error: false, loading: true };
     },
 
-    [asyncGet.rejected]: (state, action) => {
+    [asyncGetData.rejected]: (state, action) => {
       return { ...state, error: action.payload, loading: false };
     },
 
-    [asyncGet.fulfilled]: (state, action) => {
-      const recently = [...state.recently, action.payload];
+    [asyncGetData.fulfilled]: (state, action) => {
+      const newRecently = [...state.recently, action.payload];
+      const recently = newRecently.filter(
+        (item, index, self) =>
+          index ===
+          self.findIndex((t) => t.location.name === item.location.name)
+      );
       return {
         ...state,
-        recently: removeDuplicates(recently),
+        recently,
         data: action.payload,
         error: false,
         loading: false,
+        search: initialState.search,
       };
+    },
+    // get data searchList
+    [asyncSearch.pending]: (state, action) => {
+      return { ...state, search: { data: [], loading: true } };
+    },
+
+    [asyncSearch.fulfilled]: (state, action) => {
+      const data = action.payload.filter(
+        (item, index, self) =>
+          index ===
+          self.findIndex((t) => t.lat === item.lat && t.lon === item.lon)
+      );
+      return { ...state, search: { data, loading: false } };
+    },
+  },
+  reducers: {
+    searchLoading: (state, action) => {
+      state.search.loading = true;
     },
   },
 });
 
 export const dataReducer = asyncSlice.reducer;
-
-const removeDuplicates = (array) => {
-  return array.filter(
-    (item, index, self) =>
-      index === self.findIndex((t) => t.location.name === item.location.name)
-  );
-};
+export const { searchLoading } = asyncSlice.actions;
