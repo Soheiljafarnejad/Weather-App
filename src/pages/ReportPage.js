@@ -9,21 +9,21 @@ const ReportPage = () => {
     const today = data.forecast.forecastday[0].hour;
     const days = data.forecast.forecastday.slice(1, 3);
     return (
-      <section className="min-h-screen">
+      <section>
         <h2 className="font-medium text-2xl mb-2 text-center">
           Forecast report
         </h2>
         <h2 className="font-medium text-center text-lg mb-8">
           {data.location.name}/{data.location.country}
         </h2>
-        <section>
+        <section className="">
           <div className="flex items-center justify-between w-full mb-4">
             <h2 className="font-medium text-lg">Today</h2>
             <p className="text-gray-700">
               {dateFormat(data.forecast.forecastday[0].date, options)}
             </p>
           </div>
-          <ul className="flex items-center justify-start gap-4 w-full pb-4 overflow-auto mb-6">
+          <ul className="flex items-center justify-start gap-4 pb-4 overflow-auto mb-6 w-full">
             {today.map((item) => {
               const optionsTime = { timeStyle: "short", hour12: false };
               const time = dateFormat(item.time, optionsTime);
@@ -54,7 +54,7 @@ const ReportPage = () => {
           <p className="text-gray-700">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
+              className="h-6 w-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"

@@ -56,7 +56,7 @@ const SearchPage = () => {
     }
   };
   return (
-    <section className="min-h-screen text-center">
+    <section className="text-center">
       <h2 className="font-medium text-2xl mb-2">Pick location</h2>
       <p className="text-sm mb-6 px-4">
         Find the area or city that you want to know the detailed weather info at
@@ -79,7 +79,7 @@ const SearchPage = () => {
             />
           </svg>
           <input
-            className="bg-gray-200 focus:border-0 focus:outline-0 py-3 px-2 font-medium flex-1"
+            className="bg-gray-200 focus:border-0 focus:outline-0 py-3 px-2 font-medium flex-1 w-full"
             type="text"
             value={searchValue}
             onChange={searchHandler}
