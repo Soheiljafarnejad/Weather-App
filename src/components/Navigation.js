@@ -1,14 +1,17 @@
 import { NavLink } from "react-router-dom";
+import DarkMode from "./DarkMode";
 
 const Navigation = () => {
   return (
-    <ul className="flex items-center justify-between w-full shadow-[0_-2px_8px_0_rgba(0,0,0,0.1)] rounded-tr-md rounded-tl-md md:shadow-none md:flex-col md:items-start md:justify-start md:p-4 md:min-h-screen bg-gray-100">
-      <li className="bg-gray-100 text-gray-500 w-full p-2">
+    <ul className="flex items-center justify-between w-full shadow-[0_-2px_8px_0_rgba(0,0,0,0.1)] rounded-tr-md rounded-tl-md md:shadow-none md:flex-col md:items-start md:justify-start md:p-2 md:pr-4 md:min-h-screen bg-color">
+      <li className="text-secondary-color w-full p-2">
         <NavLink
           className={(e) =>
             `${
-              e.isActive ? "text-black bg-gray-50 rounded-full shadow-md" : ""
-            } py-4 md:px-4 flex items-center justify-start w-full md:gap-2 hover:bg-gray-50 hover:rounded-full transition-all duration-300`
+              e.isActive
+                ? "text-color md:bg-gray-200 dark:md:bg-slate-800 md:rounded-lg md:shadow-md"
+                : ""
+            } py-4 md:px-4 flex items-center justify-start w-full md:gap-2 md:hover:bg-gray-200 dark:md:hover:bg-slate-800 hover:rounded-lg transition-all duration-300`
           }
           to="/"
         >
@@ -29,12 +32,14 @@ const Navigation = () => {
           <span className="text-lg font-medium hidden md:block">Home</span>
         </NavLink>
       </li>
-      <li className="bg-gray-100 text-gray-500 w-full p-2">
+      <li className="text-secondary-color w-full p-2">
         <NavLink
           className={(e) =>
             `${
-              e.isActive ? "text-black bg-gray-50 rounded-full shadow-md" : ""
-            } py-4 md:px-4 flex items-center justify-start w-full md:gap-2 hover:bg-gray-50 hover:rounded-full transition-all duration-300 max-w-sm `
+              e.isActive
+                ? "text-color md:bg-gray-200 dark:md:bg-slate-800 md:rounded-lg md:shadow-md"
+                : ""
+            } py-4 md:px-4 flex items-center justify-start w-full md:gap-2 md:hover:bg-gray-200 dark:md:hover:bg-slate-800 hover:rounded-lg transition-all duration-300 max-w-sm `
           }
           to="/search"
         >
@@ -55,12 +60,14 @@ const Navigation = () => {
           <span className="text-lg font-medium hidden md:block">Search</span>
         </NavLink>
       </li>
-      <li className="bg-gray-100 text-gray-500 w-full p-2">
+      <li className="text-secondary-color w-full p-2">
         <NavLink
           className={(e) =>
             `${
-              e.isActive ? "text-black bg-gray-50 rounded-full shadow-md" : ""
-            } py-4 md:px-4 flex items-center justify-start w-full md:gap-2 hover:bg-gray-50 hover:rounded-full transition-all duration-300 max-w-sm `
+              e.isActive
+                ? "text-color md:bg-gray-200 dark:md:bg-slate-800 md:rounded-lg md:shadow-md"
+                : ""
+            } py-4 md:px-4 flex items-center justify-start w-full md:gap-2 md:hover:bg-gray-200 dark:md:hover:bg-slate-800 hover:rounded-lg transition-all duration-300 max-w-sm`
           }
           to="/report"
         >
@@ -81,36 +88,8 @@ const Navigation = () => {
           <span className="text-lg font-medium hidden md:block">Forecast</span>
         </NavLink>
       </li>
-      <li className="bg-gray-100 text-gray-500 w-full p-2 mt-auto">
-        <NavLink
-          className={(e) =>
-            `${
-              e.isActive ? "text-black bg-gray-50 rounded-full shadow-md" : ""
-            } py-4 md:px-4 flex items-center justify-start w-full md:gap-2 hover:bg-gray-50 hover:rounded-full transition-all duration-300 max-w-sm `
-          }
-          to="/setting"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 mx-auto md:m-0"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-            />
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-            />
-          </svg>
-          <span className="text-lg font-medium hidden md:block">Setting</span>
-        </NavLink>
+      <li className="text-secondary-color w-full p-2 cursor-pointer">
+        <DarkMode />
       </li>
     </ul>
   );

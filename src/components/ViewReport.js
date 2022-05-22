@@ -15,7 +15,7 @@ const ViewReport = ({ data }) => {
           const date = dateFormat(item.time, optionsDate);
           return (
             <li
-              className="bg-gray-200 rounded-lg shadow-md p-4 flex items-center justify-between gap-x-2 w-full"
+              className="bg-secondary-color rounded-lg shadow-md p-4 flex items-center justify-between gap-x-2 w-full"
               key={item.time_epoch}
             >
               <div className="text-center whitespace-nowrap">

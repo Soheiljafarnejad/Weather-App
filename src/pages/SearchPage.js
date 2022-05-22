@@ -63,7 +63,7 @@ const SearchPage = () => {
         this time
       </p>
       <div className="flex items-center justify-between gap-4 mb-8">
-        <div className="flex items-center justify-between bg-gray-200 text-gray-600 rounded-md shadow-md px-3 flex-1 relative">
+        <div className="flex items-center justify-between bg-secondary-color text-secondary-color rounded-md shadow-md px-3 flex-1 relative">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6"
@@ -79,25 +79,25 @@ const SearchPage = () => {
             />
           </svg>
           <input
-            className="bg-gray-200 focus:border-0 focus:outline-0 py-3 px-2 font-medium flex-1 w-full"
+            className="bg-secondary-color focus:border-0 focus:outline-0 py-3 px-2 font-medium flex-1 w-full"
             type="text"
             value={searchValue}
             onChange={searchHandler}
           />
 
           <div
-            className={`absolute bg-white top-14 inset-x-0 rounded-md shadow-md overflow-hidden ${
+            className={`absolute bg-color top-14 inset-x-0 rounded-md shadow-md overflow-hidden ${
               searchValue && search.data.length > 0 ? "block" : "hidden"
             }`}
           >
-            <ul className="flex flex-col items-start overflow-auto max-h-48">
+            <ul className="flex flex-col items-start overflow-auto max-h-52">
               {search.data.length > 0 &&
                 search.data.map((item) => {
                   return (
                     <li
                       onClick={() => searchListClickHandler(item.name)}
                       key={item.id}
-                      className="flex items-center justify-start py-1.5 px-4 bg-gray-200 text-gray-600 w-full border border-b-gray-300 cursor-pointer"
+                      className="flex items-center justify-start py-2 px-4 bg-secondary-color text-secondary-color w-full border-b border-b-gray-300 dark:border-b-gray-600 cursor-pointer"
                     >
                       <span>
                         {item.name} / {item.country}
@@ -155,7 +155,7 @@ const SearchPage = () => {
 
         <button
           onClick={getLocationUser}
-          className="bg-gray-200 text-gray-600 rounded-md shadow-md p-3"
+          className="bg-secondary-color text-secondary-color rounded-md shadow-md p-3"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -185,14 +185,14 @@ const SearchPage = () => {
               <li
                 onClick={() => recentlyClickHandler(item.location.name)}
                 key={item.location.name}
-                className="bg-gray-200 rounded-md shadow-md p-3 cursor-pointer"
+                className="bg-secondary-color rounded-md shadow-md p-3 cursor-pointer"
               >
                 <div className="flex items-center justify-between">
                   <div className="flex flex-col items-start justify-start mb-2 overflow-hidden">
                     <p className="font-medium text-xl">
                       {Math.round(item.current.temp_c)}&#8451;
                     </p>
-                    <p className="text-gray-700 overflow-hidden whitespace-nowrap text-ellipsis w-full">
+                    <p className="text-secondary-color overflow-hidden whitespace-nowrap text-ellipsis w-full">
                       {item.current.condition.text}
                     </p>
                   </div>

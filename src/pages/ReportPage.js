@@ -19,7 +19,7 @@ const ReportPage = () => {
         <section className="">
           <div className="flex items-center justify-between w-full mb-4">
             <h2 className="font-medium text-lg">Today</h2>
-            <p className="text-gray-700">
+            <p className="text-secondary-color">
               {dateFormat(data.forecast.forecastday[0].date, options)}
             </p>
           </div>
@@ -29,7 +29,7 @@ const ReportPage = () => {
               const time = dateFormat(item.time, optionsTime);
               return (
                 <li
-                  className="bg-gray-200 rounded-lg shadow-md p-4 flex items-center justify-between gap-x-2 min-w-[140px]"
+                  className="bg-secondary-color rounded-lg shadow-md p-4 flex items-center justify-between gap-x-2 min-w-[140px]"
                   key={item.time_epoch}
                 >
                   <img
@@ -51,7 +51,7 @@ const ReportPage = () => {
         </section>
         <div className="flex items-center justify-between w-full mb-4">
           <h2 className="font-medium text-lg">Next forecast</h2>
-          <p className="text-gray-700">
+          <p className="text-secondary-color">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
@@ -77,7 +77,7 @@ const ReportPage = () => {
               const date = dateFormat(item.date, optionsDate);
               return (
                 <li
-                  className="bg-gray-200 rounded-lg shadow-md p-4 flex items-center justify-between gap-x-2 w-full"
+                  className="bg-secondary-color rounded-lg shadow-md p-4 flex items-center justify-between gap-x-2 w-full"
                   key={item.date_epoch}
                 >
                   <div className="text-center whitespace-nowrap w-24">
