@@ -56,7 +56,7 @@ const DarkMode = () => {
     <section
       className={`${
         toggle ? "md:bg-secondary-color md:rounded-lg md:shadow-md" : "md:pb-4"
-      } relative md:static md:flex flex-col md:hover:bg-gray-200 dark:md:hover:bg-slate-800 hover:rounded-lg max-w-sm md:pt-4 py-4 md:py-0`}
+      } relative md:static md:flex flex-col md:hover:bg-gray-200 dark:md:hover:bg-slate-800 hover:rounded-lg md:pt-4 py-4 md:py-0`}
       onClick={() => setToggle(!toggle)}
     >
       <div className="md:flex items-center justify-start w-full md:gap-2 md:px-4">
@@ -94,7 +94,7 @@ const DarkMode = () => {
         </span>
         <span className="text-lg font-medium hidden md:block">Theme</span>
       </div>
-
+      <section className={`${toggle ? "block md:hidden" : "hidden"} backdrop-blur-sm fixed inset-0`}></section>
       <div
         className={`${
           toggle ? "block" : "hidden"

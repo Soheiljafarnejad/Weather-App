@@ -3,15 +3,15 @@ import DarkMode from "./DarkMode";
 
 const Navigation = () => {
   return (
-    <ul className="flex items-center justify-between w-full shadow-[0_-2px_8px_0_rgba(0,0,0,0.1)] rounded-tr-md rounded-tl-md md:shadow-none md:flex-col md:items-start md:justify-start md:p-2 md:pr-4 md:min-h-screen bg-color">
-      <li className="text-secondary-color w-full p-2">
+    <ul className="flex items-center justify-between w-full shadow-[0_-2px_8px_0_rgba(0,0,0,0.1)] rounded-tr-md rounded-tl-md md:shadow-none md:gap-4 md:flex-col md:items-start md:justify-start md:p-2 md:pr-4 md:min-h-screen bg-color">
+      <li className="text-secondary-color w-full">
         <NavLink
           className={(e) =>
             `${
               e.isActive
                 ? "text-color md:bg-gray-200 dark:md:bg-slate-800 md:rounded-lg md:shadow-md"
                 : ""
-            } py-4 md:px-4 flex items-center justify-start w-full md:gap-2 md:hover:bg-gray-200 dark:md:hover:bg-slate-800 hover:rounded-lg transition-all duration-300`
+            } py-4 md:px-4 flex items-center justify-start w-full md:gap-2 md:hover:bg-gray-200 dark:md:hover:bg-slate-800 hover:rounded-lg transition-all duration-300 max-w-sm`
           }
           to="/"
         >
@@ -32,7 +32,7 @@ const Navigation = () => {
           <span className="text-lg font-medium hidden md:block">Home</span>
         </NavLink>
       </li>
-      <li className="text-secondary-color w-full p-2">
+      <li className="text-secondary-color w-full">
         <NavLink
           className={(e) =>
             `${
@@ -60,7 +60,7 @@ const Navigation = () => {
           <span className="text-lg font-medium hidden md:block">Search</span>
         </NavLink>
       </li>
-      <li className="text-secondary-color w-full p-2">
+      <li className="text-secondary-color w-full">
         <NavLink
           className={(e) =>
             `${
@@ -88,7 +88,7 @@ const Navigation = () => {
           <span className="text-lg font-medium hidden md:block">Forecast</span>
         </NavLink>
       </li>
-      <li className="text-secondary-color w-full p-2 cursor-pointer">
+      <li className="text-secondary-color w-full cursor-pointer max-w-sm">
         <DarkMode />
       </li>
     </ul>
