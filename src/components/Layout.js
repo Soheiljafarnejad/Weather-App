@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
         </nav>
         <main className="min-h-screen bg-color px-4 pt-4 pb-16 md:pb-0 md:w-9/12 md:ml-auto">
           {loading && !error && (
-            <section className="backdrop-blur-sm fixed inset-0 z-20"></section>
+            <section className="backdrop-blur-sm fixed inset-0 z-10"></section>
           )}
           {error && !loading && (
             <h2 className="text-2xl text-center">{error}</h2>
