@@ -22,7 +22,7 @@ const ViewReport = ({ data }) => {
                 <p className="font-medium">{time}</p>
                 <p className="text-xs">{date}</p>
               </div>
-              <p className="font-medium text-xl mx-4 whitespace-nowrap">
+              <p className="font-medium text-xl mx-4 md:mx-8 whitespace-nowrap">
                 <span>{Math.round(item.temp_c)}</span>
                 <span className="text-base">&#8451;</span>
               </p>

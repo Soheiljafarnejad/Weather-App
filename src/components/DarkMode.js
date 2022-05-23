@@ -79,7 +79,7 @@ const DarkMode = () => {
         <span className={`${theme === "light" ? "block" : "hidden"}`}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 mx-auto md:mx-0"
+            className="h-7 w-7 mx-auto md:mx-0"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -107,11 +107,11 @@ const DarkMode = () => {
         <button
           onClick={switchTheme}
           data-theme="light"
-          className="flex items-center md:justify-start justify-center w-full py-2 md:py-3 px-4 md:hover:bg-gray-300 md:dark:hover:bg-slate-500 md:border-b border-b-gray-300 dark:border-b-gray-600"
+          className="flex items-center md:justify-start justify-center w-full py-1 md:py-3 px-4 md:hover:bg-gray-300 md:dark:hover:bg-slate-500 md:border-b border-b-gray-300 dark:border-b-gray-600"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-11 w-11 md:w-6 md:h-6 bg-secondary-color md:bg-opacity-0 md:dark:bg-opacity-0 p-2 md:p-0 rounded-full"
+            className="h-11 w-11 md:w-6 md:h-6 bg-white dark:bg-slate-800 md:bg-opacity-0 md:dark:bg-opacity-0 p-2 md:p-0 rounded-full"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -128,11 +128,11 @@ const DarkMode = () => {
         <button
           data-theme="dark"
           onClick={switchTheme}
-          className="flex items-center md:justify-start justify-center w-full py-2 md:py-3 px-4 md:hover:bg-gray-300 md:dark:hover:bg-slate-500 md:border-b border-b-gray-300 dark:border-b-gray-600"
+          className="flex items-center md:justify-start justify-center w-full py-1 md:py-3 px-4 md:hover:bg-gray-300 md:dark:hover:bg-slate-500 md:border-b border-b-gray-300 dark:border-b-gray-600"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-11 w-11 md:w-6 md:h-6 bg-secondary-color md:bg-opacity-0 md:dark:bg-opacity-0 p-2 md:p-0 rounded-full"
+            className="h-11 w-11 md:w-6 md:h-6 bg-white dark:bg-slate-800 md:bg-opacity-0 md:dark:bg-opacity-0 p-2 md:p-0 rounded-full"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -149,11 +149,11 @@ const DarkMode = () => {
         <button
           data-theme="system"
           onClick={switchTheme}
-          className="flex items-center md:justify-start justify-center w-full py-2 md:py-3 px-4 md:hover:bg-gray-300 md:dark:hover:bg-slate-500  md:border-b border-b-gray-300 dark:border-b-gray-600"
+          className="flex items-center md:justify-start justify-center w-full py-1 md:py-3 px-4 md:hover:bg-gray-300 md:dark:hover:bg-slate-500  md:border-b border-b-gray-300 dark:border-b-gray-600"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="w-11 h-11 md:w-6 md:h-7 bg-secondary-color md:bg-opacity-0 md:dark:bg-opacity-0 px-2 py-1 md:p-0 rounded-full"
+            className="w-11 h-11 md:w-6 md:h-7 bg-white dark:bg-slate-800 md:bg-opacity-0 md:dark:bg-opacity-0 px-2 py-1 md:p-0 rounded-full"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"

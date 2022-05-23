@@ -11,7 +11,7 @@ const Navigation = () => {
               e.isActive
                 ? "text-color md:bg-gray-200 dark:md:bg-slate-800 md:rounded-lg md:shadow-md"
                 : ""
-            } transition-all duration-300 max-w-sm py-4 md:px-4 flex items-center justify-start w-full md:gap-2 md:hover:bg-gray-200 dark:md:hover:bg-slate-800 hover:rounded-lg`
+            } transition-all duration-300 max-w-sm py-5 md:px-4 flex items-center justify-start w-full md:gap-2 md:hover:bg-gray-200 dark:md:hover:bg-slate-800 hover:rounded-lg`
           }
           to="/"
         >
@@ -39,7 +39,7 @@ const Navigation = () => {
               e.isActive
                 ? "text-color md:bg-gray-200 dark:md:bg-slate-800 md:rounded-lg md:shadow-md"
                 : ""
-            } transition-all duration-300 max-w-sm py-4 md:px-4 flex items-center justify-start w-full md:gap-2 md:hover:bg-gray-200 dark:md:hover:bg-slate-800 hover:rounded-lg `
+            } transition-all duration-300 max-w-sm py-5 md:px-4 flex items-center justify-start w-full md:gap-2 md:hover:bg-gray-200 dark:md:hover:bg-slate-800 hover:rounded-lg `
           }
           to="/search"
         >
@@ -67,7 +67,7 @@ const Navigation = () => {
               e.isActive
                 ? "text-color md:bg-gray-200 dark:md:bg-slate-800 md:rounded-lg md:shadow-md"
                 : ""
-            } transition-all duration-300 max-w-sm py-4 md:px-4 flex items-center justify-start w-full md:gap-2 md:hover:bg-gray-200 dark:md:hover:bg-slate-800 hover:rounded-lg`
+            } transition-all duration-300 max-w-sm py-5 md:px-4 flex items-center justify-start w-full md:gap-2 md:hover:bg-gray-200 dark:md:hover:bg-slate-800 hover:rounded-lg`
           }
           to="/report"
         >
