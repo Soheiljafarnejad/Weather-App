@@ -12,8 +12,7 @@ const initialState = {
 export const asyncGetData = createAsyncThunk(
   "data/asyncGetData",
   async (payload, { rejectWithValue }) => {
-    
-    const key = process.env.REACT_APP_API_KEY;
+    const key = "330a2d2b7ae848bcbf3163422222705";
     try {
       const response = await axios.get(
         `https://api.weatherapi.com/v1/forecast.json`,
@@ -31,7 +30,7 @@ export const asyncGetData = createAsyncThunk(
 export const asyncSearch = createAsyncThunk(
   "data/asyncSearch",
   async (payload, { rejectWithValue }) => {
-    const key = process.env.REACT_APP_API_KEY;
+    const key = "330a2d2b7ae848bcbf3163422222705";
     try {
       const response = await axios.get(
         `https://api.weatherapi.com/v1/search.json`,
