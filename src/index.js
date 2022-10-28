@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import { Toaster } from "react-hot-toast";
 import { Provider } from "react-redux";
-import store from "../src/features/store";
+import store from "../src/redux/store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

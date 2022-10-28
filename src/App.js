@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout";
-import { asyncGetData } from "./features/asyncSlice";
+import { asyncGetData } from "./redux/asyncSlice";
 import HomePage from "./pages/HomePage";
 import ReportPage from "./pages/ReportPage";
 import SearchPage from "./pages/SearchPage";
